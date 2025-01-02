@@ -3,19 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Color variables based on provided scheme */
+  --background: #145da0; /* Midnight Blue - Page background */
+  --nav-bg: #0c2d48;     /* Dark Blue - Navbar & Footer background */
+  --button-bg: #2e8bc0;  /* Blue - Button color */
+  --hover-color: #b1d4e0;/* Baby Blue - Hover states */
+  --text-color: #ffffff; /* White text for contrast on dark backgrounds */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  font-family: "Roboto", serif;
 }
 
 body {
-  color: var(--foreground);
+  margin: 0;
+  font-family: "Roboto", serif;
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color);
 }
