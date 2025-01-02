@@ -1,7 +1,7 @@
 export default function ResumePage() {
   return (
     <section
-      className="p-8 max-w-3xl mx-auto h-[80vh] md:overflow-hidden overflow-auto"
+      className="p-8 max-w-3xl mx-auto h-[85vh] md:overflow-hidden overflow-auto"
       style={{ background: "var(--background)", color: "var(--text-color)" }}
     >
       <h2 className="text-3xl font-bold">My Resume</h2>
