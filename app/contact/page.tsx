@@ -12,7 +12,7 @@ export default function ContactPage() {
       await emailjs.sendForm('your_service_id', 'your_template_id', form.current, 'your_user_id');
       alert('Message sent successfully!');
       form.current.reset();
-    } catch (error) {
+    } catch {
       alert('Failed to send message. Please try again.');
     }
   };

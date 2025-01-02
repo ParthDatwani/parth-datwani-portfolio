@@ -2,13 +2,37 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
+interface Blog {
+  title: string;
+  date: string;
+  slug: string;
+}
+
 export default async function BlogPage() {
-  const files = fs.readdirSync(path.join(process.cwd(), 'posts'));
-  const blogs = files.map((file) => {
-    const content = fs.readFileSync(path.join('posts', file), 'utf-8');
-    const { data } = matter(content);
-    return { ...data, slug: file.replace('.md', '') };
-  });
+  let blogs: Blog[] = [];
+
+  try {
+    // Read the list of markdown files in the "posts" directory
+    const files = fs.readdirSync(path.join(process.cwd(), 'posts'));
+
+    blogs = files.map((file) => {
+      const content = fs.readFileSync(path.join('posts', file), 'utf-8');
+      const { data } = matter(content);
+
+      // Ensure the `data` object contains the expected keys
+      if (!data.title || !data.date) {
+        throw new Error(`Missing required fields in blog post: ${file}`);
+      }
+
+      return {
+        title: data.title as string,
+        date: data.date as string,
+        slug: file.replace('.md', ''),
+      };
+    });
+  } catch (error) {
+    console.error("Error reading blog posts:", error);
+  }
 
   return (
     <section
@@ -17,7 +41,7 @@ export default async function BlogPage() {
     >
       <h2 className="text-3xl font-bold">Blog</h2>
       <ul className="mt-4 space-y-4">
-        {blogs.map((blog: any, i: number) => (
+        {blogs.map((blog, i) => (
           <li
             key={i}
             className="p-4 rounded"

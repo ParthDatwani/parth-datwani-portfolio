@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useTypewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
 
