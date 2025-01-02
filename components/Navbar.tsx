@@ -24,7 +24,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         {/* Logo Section */}
         <div className="flex items-center space-x-2">
-          <a href='/' className="relative rotate-6 w-20 h-16 md:w-24 md:h-20">
+          <a href="/" className="relative rotate-6 w-20 h-16 md:w-24 md:h-20">
             <Image
               src="/images/Logo.png"
               alt="Logo"
